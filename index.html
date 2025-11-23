@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N.O.I.R - Identidade e Representatividade</title>
+    
+    <link rel="icon" type="image/png" href="./Images/noir-logo-tron-aba.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Turret+Road:wght@200;300;400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&display=swap" rel="stylesheet"> 
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <aside class="side-menu" id="sideMenu">
+        <button class="close-menu-btn" id="closeMenuBtn">
+            <i data-lucide="x"></i>
+        </button>
+        <nav class="menu-nav">
+            <a href="#intro" class="menu-link">Início & Propósito</a>
+            <a href="#sobre" class="menu-link">Sobre o Autor</a>
+            <a href="#herois" class="menu-link">Galeria de Heróis</a>
+            <a href="#contato" class="menu-link">Contato</a>
+        </nav>
+    </aside>
+
+    <header>
+        <div class="header-title-group">
+            <div class="titles">
+                <img src="./Images/noir-logo-tron.png" alt="Logotipo do N.O.I.R" class="header-logo">
+                <h2>Núcleo Operacional de Identidade e Representatividade</h2>
+            </div>
+        </div>
+
+        <div class="header-actions">
+            <div class="search-container">
+                <input type="text" placeholder="Pesquisar herói..." aria-label="Campo de pesquisa de heróis">
+                <button id="botao-busca">Buscar</button>
+            </div>
+            
+            <button class="menu-toggle-btn" id="menuToggleBtn" aria-label="Abrir menu de navegação">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section id="intro" class="landing-section intro-section">
+            <div class="intro-content glass-panel">
+                <h2 class="section-title">O Poder da Representatividade</h2>
+                
+                <p class="highlight-text">Para a próxima geração de lendas!</p>
+                <p class="intro-content-p">Lembra da primeira vez que você viu um herói que se parecia com você? Aquele sentimento de validação é o combustível da iniciativa N.O.I.R. Este é o banco de dados definitivo dos heróis negros no multiverso da cultura pop — de vigilantes das ruas a monarcas tecnológicos. Meu objetivo é garantir que o legado dessas lendas ilumine o caminho das próximas gerações.
+                <p class="intro-content-p"> Mais do que entretenimento, queremos que cada jovem encontre aqui não apenas um personagem favorito, e sim um reflexo de sua própria força. "Porque para se tornar lenda, é preciso ver uma".</p>
+            </div>
+        </section>
+
+        <section id="sobre" class="landing-section about-section">
+            <div class="about-container glass-panel">
+                <h2 class="section-title">O Agente Por Trás do Núcleo</h2>
+                
+                <div class="profile-wrapper">
+                    <div class="author-photo-wrapper">
+                        <img src="./Images/perfil-art-3x4.png" alt="Foto de Weslley" class="author-photo">
+                    </div>
+                    <div class="about-text">
+                        <h2>Olá, eu sou o Weslley</h2>
+                        <p>Desenvolvedor Full-Stack em formação (Alura) e entusiasta de tecnologia e cultura geek. Desenvolvi esta plataforma como uma solução digital para uma necessidade social: dar visibilidade aos heróis negros. Aqui, aplico meus conhecimentos técnicos para construir não apenas um site, mas um espaço de identidade e inspiração.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+       <section id="herois" class="landing-section heroes-section">
+            <div class="intro-content glass-panel-heroes">
+                <h2 class="section-title">Arquivo de Agentes</h2>
+                
+                <div class="carousel-container-full">
+                    <div class="carousel-wrapper">
+                        <div class="card-container carousel-track">
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" id="contato">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="./Images/noir-logo-tron-aba.png" alt="Logo pequeno" class="footer-logo-mini">
+                <p class="footer-location">Iniciativa N.O.I.R &copy; 2025.</p>
+            </div>
+            <ul class="footer-links">
+                <li>
+                    <a href="https://github.com/WeslleyLafrataSampaio" target="_blank" rel="noopener noreferrer">
+                        <i data-lucide="github"></i> GitHub
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/weslley-lafrata-sampaio-a3a35a184/" target="_blank" rel="noopener noreferrer">
+                        <i data-lucide="linkedin"></i> LinkedIn
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Inicializa os ícones do Lucide
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

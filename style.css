@@ -1,0 +1,618 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    /* --- PALETA DE CORES --- */
+    --cor-fundo-principal: #050507;
+    --cor-fundo-cartao: rgba(20, 20, 25, 0.85);
+    --cor-acao-primaria: #FFC107; /* Amarelo Neon */
+    --cor-acento: #4A5568;        /* Cinza Azulado */
+    --cor-texto-principal: #E2E8F0;
+    --cor-texto-secundario: #94A3B8;
+    
+    /* --- TIPOGRAFIA --- */
+    --fonte-titulos: 'Turret Road', cursive;
+    --fonte-interface: 'Turret Road', cursive;
+    --fonte-corpo: 'Sora', sans-serif;
+    
+    /* Fallback para cor do herói */
+    --hero-color: var(--cor-acao-primaria); 
+}
+
+/* --- CONFIGURAÇÕES DO CORPO (BODY) --- */
+body {
+    margin: 0;
+    background-color: #0a0a0a;
+    background-image: url('./Images/background.png');
+    background-size: cover;
+    background-position: center 2rem; 
+    background-attachment: fixed;
+    color: var(--cor-texto-principal);
+    font-family: var(--fonte-corpo);
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --- COMPORTAMENTO DE SCROLL --- */
+html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+}
+
+/* --- CABEÇALHO (HEADER) --- */
+header {
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    background: rgba(0, 0, 0, 0.7); 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 50;
+    gap: 1rem;
+    border-bottom: 1px solid var(--cor-acao-primaria)
+}
+
+.header-title-group {
+    display: flex;
+    align-items: center;
+    gap: 15rem;
+}
+
+.header-logo {  
+    height: 2.4rem;
+    object-fit: contain;
+}
+
+.titles {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.titles h2 {
+    margin: 0; 
+    line-height: 1.1; 
+    position: relative;
+    top: 11px;
+}
+
+h1, h3 {
+    font-family: var(--fonte-titulos);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 800;
+}
+
+h2 {
+    font-family: var(--fonte-titulos);
+    font-weight: 400;
+    text-transform: none;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* --- BARRA DE PESQUISA --- */
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-container input {
+    padding: 0.375rem 0.75rem;
+    border-radius: 1rem;
+    border: 1px solid var(--cor-texto-secundario);
+    background: var(--cor-fundo-principal);
+    font-family: var(--fonte-interface);
+    font-size: 1.5rem;
+    transition: all 0.2s ease;
+    width: 30rem;
+    color: var(--cor-texto-principal);
+    margin-right: .5rem;
+}
+
+.search-container input::placeholder {
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: var(--cor-texto-secundario);
+}
+
+.search-container input:focus {
+    outline: none;
+    border-color: var(--cor-acento);
+    box-shadow: 0 0 0 0.1rem var(--cor-acento);
+}
+
+#botao-busca {
+    padding: 0.75rem 1rem;
+    border-radius: 1rem;
+    border: none;
+    border-color: var(--cor-acento);
+    cursor: pointer;
+    font-family: var(--fonte-interface);
+    font-weight: 800;
+    font-size: 1rem;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    background-color: var(--cor-acento);
+    color: var(--cor-acao-primaria);
+}
+
+#botao-busca:hover {
+    filter: brightness(1.2);
+    box-shadow: 0 0 8px var(--cor-acento);
+}
+
+#botao-busca:active {
+    transform: scale(0.98);
+}
+
+/* --- BOTÃO MENU HAMBÚRGUER --- */
+.menu-toggle-btn {
+    background: transparent;
+    border: none;
+    color: var(--cor-texto-secundario);
+    cursor: pointer;
+    padding: 0rem;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    display: flex;
+}
+
+.menu-toggle-btn:hover {
+    filter: drop-shadow(0 0 8px var(--cor-acao-primaria));
+    transform: scale(1.1);
+}
+
+/* --- MENU LATERAL (SIDEBAR) --- */
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100vh;
+    background: var(--cor-fundo-cartao);
+    backdrop-filter: blur(10px);
+    border-left: 1px solid var(--cor-acao-primaria);
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.7);
+    z-index: 100;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.side-menu.active {
+    transform: translateX(0);
+}
+
+.close-menu-btn {
+    align-self: flex-end;
+    background: transparent;
+    border: none;
+    color: var(--cor-texto-secundario);
+    cursor: pointer;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    transition: color 0.3s;
+}
+
+.close-menu-btn:hover {
+    color: var(--cor-acao-primaria);
+}
+
+.menu-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.menu-link {
+    font-family: var(--fonte-interface);
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--cor-texto-principal);
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    transition: color 0.3s, padding-left 0.3s;
+}
+
+.menu-link:hover {
+    color: var(--cor-acao-primaria);
+    padding-left: 10px;
+}
+
+/* --- ESTRUTURA PRINCIPAL (MAIN) --- */
+main {
+    flex: 1;
+    max-width: 80rem;
+    margin: 0 auto;
+}
+
+/* Configuração Geral das Seções (Landing Page) */
+.landing-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem 1rem; 
+    padding-top: 5rem;
+    margin-bottom: 0;
+    scroll-snap-align: start;
+}
+
+.section-title {
+    font-family: var(--fonte-titulos);
+    color: var(--cor-acao-primaria);
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    margin-top: 0;
+    text-shadow: 0 0 10px rgba(255, 193, 7, 0.3);
+}
+
+/* --- CLASSE MESTRE PARA CARD TRANSLÚCIDO (GLASS PANEL) --- */
+.glass-panel {
+    background: var(--cor-fundo-cartao);
+    backdrop-filter: blur(0px);
+    border: 1px solid var(--cor-acento);
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0);
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Seção INTRODUÇÃO */
+.intro-content {
+    text-align: center;
+}
+
+.highlight-text {
+    font-family: var(--fonte-titulos);
+    font-size: 1.8rem;
+    color: var(--cor-texto-secundario);
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+.intro-content-p {
+    font-family: var(--fonte-titulos);
+    font-size: 1.3rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: var(--cor-texto-principal);
+}
+
+/* Seção SOBRE O AUTOR */
+.profile-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    width: 100%;
+    text-align: left;
+}
+
+.author-photo-wrapper {
+    flex-shrink: 0;
+}
+
+.author-photo {
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--cor-acao-primaria);
+    box-shadow: 0 0 20px var(--cor-acao-primaria);
+}
+
+.about-text h2 {
+    font-size: 1.8rem;
+    color: var(--cor-texto-secundario);
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+.about-text p {
+    font-family: var(--fonte-titulos);
+    font-size: 1.3rem;
+    line-height: 1.8;
+    color: var(--cor-texto-principal);
+}
+
+/* --- PAINEL GERAL DOS HERÓIS --- */
+.glass-panel-heroes {
+    background: var(--cor-fundo-cartao);
+    backdrop-filter: blur(0px);
+    border: 1px solid var(--cor-acento);
+    padding: 3rem 0;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0);
+    width: 100%;
+    max-width: 100%;
+    margin: 7rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* --- CARROSSEL SLIDER (Center Focus Mode) --- */
+
+.carousel-container-full {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+}
+
+/* 1. MOLDURA INTERNA (Wrapper) */
+.carousel-wrapper {
+    width: 100%; 
+    height: 500px; /* Altura fixa para evitar cortes */
+    
+    /* CORREÇÃO: Removemos mask-image para os cards laterais aparecerem */
+    overflow-x: hidden; 
+    overflow-y: visible; 
+    
+    position: relative;
+    padding: 2rem 0; 
+}
+
+/* 2. O TRILHO (Track) */
+.carousel-track {
+    display: flex;
+    gap: -60px; 
+    width: max-content;
+    margin: 0 auto;
+    
+    /* REMOVIDO: transition fixa */
+    /* A transição agora é controlada via classe JS */
+}
+
+/* NOVA CLASSE: Adiciona a suavidade apenas quando queremos */
+.carousel-track.with-transition {
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 3. O CARD */
+.carousel-track article {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-shrink: 0;
+    flex-grow: 0;
+    
+    width: 1024px; 
+    height: 400px;
+    
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    
+    background: rgba(20, 20, 25, 0.6);
+    backdrop-filter: blur(4px);
+    border: 1px solid var(--hero-color);
+    border-radius: 12px;
+    
+    /* EFEITO INATIVO */
+    transform: scale(0.85);
+    opacity: 1;
+    filter: grayscale(0%) brightness(1);
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    cursor: pointer; /* Mãozinha de clique */
+    box-shadow: none; 
+    
+    z-index: 1; /* Fica atrás do principal */
+}
+
+/* 4. O CARD ATIVO */
+.carousel-track article.card-active {
+    transform: scale(1);
+    opacity: 1;
+    filter: grayscale(0%) brightness(1);
+    box-shadow: 0 0 25px -5px var(--hero-color);
+    z-index: 10; /* Traz para frente */
+    cursor: default; 
+}
+
+.carousel-track .card-image {
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+    border-right: 2px solid var(--hero-color);
+}
+
+.carousel-track .card-content {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+}
+
+.card-content h2 {
+    margin-top: 0;
+    font-size: 1.8rem;
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0.25rem;
+    color: var(--hero-color);
+    text-align: left;
+}
+
+.card-content p {
+    text-align: left;
+    font-family: var(--fonte-titulos);
+    line-height: 1.2;
+    font-size: 1rem;
+    margin-bottom: 0rem;
+    color: var(--cor-texto-secundario);
+}
+
+.card-content p strong {
+    color: var(--cor-texto-principal);
+    font-weight: 600;
+}
+
+.card-content a {
+    color: var(--cor-acento);
+    font-family: var(--fonte-interface);
+    font-weight: 400;
+    text-align: right;
+    
+}
+
+.card-content a:hover {
+    text-decoration: underline;
+    color: var(--hero-color);
+}
+
+/* --- RODAPÉ (FOOTER) --- */
+.footer {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7); 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 15px 20px;
+    border-top: 1px solid #3c4043;
+    font-size: 0.8rem;
+    scroll-snap-align: end;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer-logo-mini {
+    height: 30px;
+}
+
+.footer-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.footer-links li { line-height: 1.6; }
+
+.footer-links a {
+    color: var(--cor-texto-principal);
+    text-decoration: none;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footer-links a:hover {
+    color: var(--cor-acento);
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 1150px) {
+    .carousel-wrapper {
+        height: auto;
+    }
+
+    .carousel-track article {
+        width: 85vw;
+        height: auto;
+        flex-direction: column;
+        transform: scale(0.95);
+        opacity: 0.5;
+    }
+    
+    .carousel-track article.card-active {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    .carousel-track .card-image {
+        width: 100%;
+        height: 250px;
+        border-right: none;
+        border-bottom: 2px solid var(--hero-color);
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 1rem;
+    }
+    header h1 {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    .header-title-group {
+        gap: 1rem;
+    }
+    .search-container input {
+        width: 90vw;
+        font-size: 1.2rem;
+    }
+    main {
+        padding: 0 1rem;
+    }
+    .glass-panel {
+        padding: 1.5rem;
+    }
+    .profile-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+    .author-photo {
+        width: 180px;
+        height: 180px;
+    }
+    .section-title {
+        font-size: 2rem;
+    }
+    .footer-content {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1rem;
+    }
+    .search-container input,
+    .search-container input::placeholder {
+        font-size: 1rem;
+    }
+    .footer {
+        display: none;
+    }
+}
